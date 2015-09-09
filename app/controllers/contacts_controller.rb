@@ -9,7 +9,9 @@ class ContactsController < ApplicationController
     @contact = Contact.new(secure_param)
 
     if @contact.valid?
-      #TODO save data
+      #@contact.connect_to_db
+      value = @contact.name.to_s
+      @contact.insert_data_to_table("test1", value)
       #TODO send message
       flash[:notice] = "Message sent from #{@contact.name}"
       redirect_to root_path
